@@ -24,6 +24,13 @@ namespace Ships_Bells
             }
         }
 
+        private void ShowWindow()
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+            this.Activate();
+        }
+
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ShowWindow();
@@ -67,13 +74,6 @@ namespace Ships_Bells
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowWindow();
-        }
-
-        private void ShowWindow()
-        {
-            this.WindowState = FormWindowState.Normal;
-            this.ShowInTaskbar = true;
-            this.Activate();
         }
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
