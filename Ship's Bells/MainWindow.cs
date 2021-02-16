@@ -71,14 +71,16 @@ namespace Ships_Bells
             Application.Exit();
         }
 
-        private void showToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowWindow();
-        }
-
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-            ShowWindow();
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenuStrip.Show(Cursor.Position);
+            }
+            else
+            {
+                ShowWindow();
+            }
         }
     }
 }
