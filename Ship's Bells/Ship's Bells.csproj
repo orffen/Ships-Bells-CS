@@ -52,6 +52,12 @@
   <PropertyGroup>
     <StartupObject>Ships_Bells.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>shipsbells</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Ships_Bells</RootNamespace>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />

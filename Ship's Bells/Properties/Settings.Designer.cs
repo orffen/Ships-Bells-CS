@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Properties {
+namespace Ships_Bells.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
