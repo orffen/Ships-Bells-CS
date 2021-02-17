@@ -5,23 +5,33 @@ namespace Ships_Bells
 {
     public partial class MainWindow : Form
     {
+        private static System.Timers.Timer timer;
         public MainWindow()
         {
             InitializeComponent();
-            Timer timer = new Timer();
-            timer.Tick += StrikeTheBell;
-            timer.Interval = 1000;
+            timer = new System.Timers.Timer();
+            timer.Elapsed += StrikeTheBell;
+            timer.Interval = GetInterval();
+            timer.Start();
+        }
+        
+        private void StrikeTheBell(object sender, EventArgs e)
+        {
+            BellRinger bellRinger = new BellRinger();
+            labelBells.Text = bellRinger.label;
+            notifyIcon.Text = bellRinger.label;
+            timer.Stop();
+            timer.Interval = GetInterval();
             timer.Start();
         }
 
-        private void StrikeTheBell(object sender, EventArgs e)
+        private int GetInterval()
         {
-            if ((DateTime.Now.Minute == 0 || DateTime.Now.Minute == 30) && DateTime.Now.Second == 0)
-            {
-                BellRinger bellRinger = new BellRinger();
-                labelBells.Text = bellRinger.label;
-                notifyIcon.Text = bellRinger.label;
-            }
+            DateTime now = DateTime.Now;
+            int minutes = (60 - now.Minute) % 30;
+            int seconds = 60 - now.Second;
+            int milliseconds = 1000 - now.Millisecond;
+            return (minutes * 60 * 1000) + (seconds * 1000) + milliseconds;
         }
 
         private void ShowWindow()
