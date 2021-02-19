@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Ships_Bells
@@ -16,7 +15,7 @@ namespace Ships_Bells
             timer.Interval = GetInterval();
             timer.Start();
         }
-        
+
         private void StrikeTheBell(object sender, EventArgs e)
         {
             BellRinger bellRinger = new BellRinger();
