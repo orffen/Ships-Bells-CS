@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Ships_Bells
@@ -10,6 +11,7 @@ namespace Ships_Bells
         {
             InitializeComponent();
             timer = new System.Timers.Timer();
+            timer.SynchronizingObject = this;
             timer.Elapsed += StrikeTheBell;
             timer.Interval = GetInterval();
             timer.Start();
@@ -28,8 +30,8 @@ namespace Ships_Bells
         private int GetInterval()
         {
             DateTime now = DateTime.Now;
-            int minutes = (60 - now.Minute) % 30;
-            int seconds = 60 - now.Second;
+            int minutes = (59 - now.Minute) % 30;
+            int seconds = 59 - now.Second;
             int milliseconds = 1000 - now.Millisecond;
             return (minutes * 60 * 1000) + (seconds * 1000) + milliseconds;
         }
