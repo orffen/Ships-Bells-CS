@@ -9,6 +9,9 @@ namespace Ships_Bells
         public MainWindow()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
             timer = new System.Timers.Timer();
             timer.SynchronizingObject = this;
             timer.Elapsed += StrikeTheBell;
@@ -37,6 +40,7 @@ namespace Ships_Bells
 
         private void ShowWindow()
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
             this.Activate();
@@ -69,10 +73,12 @@ namespace Ships_Bells
         {
             if (WindowState == FormWindowState.Minimized)
             {
+                this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
                 this.ShowInTaskbar = false;
             }
             else
             {
+                this.WindowState = FormWindowState.Normal;
                 this.ShowInTaskbar = true;
             }
         }
