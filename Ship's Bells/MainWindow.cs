@@ -9,9 +9,6 @@ namespace Ships_Bells
         public MainWindow()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            this.WindowState = FormWindowState.Minimized;
-            this.ShowInTaskbar = false;
             timer = new System.Timers.Timer();
             timer.SynchronizingObject = this;
             timer.Elapsed += StrikeTheBell;
@@ -40,10 +37,10 @@ namespace Ships_Bells
 
         private void ShowWindow()
         {
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.WindowState = FormWindowState.Normal;
-            this.ShowInTaskbar = true;
-            this.Activate();
+            WindowState = FormWindowState.Normal;
+            ShowInTaskbar = true;
+            Show();
+            Activate();
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -73,13 +70,13 @@ namespace Ships_Bells
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                this.ShowInTaskbar = false;
+                ShowInTaskbar = false;
+                Hide();
             }
             else
             {
-                this.WindowState = FormWindowState.Normal;
-                this.ShowInTaskbar = true;
+                ShowInTaskbar = true;
+                Show();
             }
         }
 
@@ -98,6 +95,11 @@ namespace Ships_Bells
             {
                 ShowWindow();
             }
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

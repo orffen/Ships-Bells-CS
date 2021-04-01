@@ -147,6 +147,7 @@ namespace Ships_Bells
             this.ShowInTaskbar = false;
             this.Text = "Ship\'s Bells";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
